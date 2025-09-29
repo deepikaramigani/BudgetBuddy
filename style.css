@@ -1,0 +1,212 @@
+/* ========== RESET & GLOBAL ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+  color: #333;
+}
+a { text-decoration: none; color: inherit; }
+h2 { margin-bottom: 10px; font-size: 1.2rem; }
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+  width: 220px;
+  background: #1e2a38;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar h1 {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+.sidebar nav a {
+  display: block;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+.sidebar nav a:hover {
+  background: #2f3e4e;
+}
+
+/* ========== MAIN LAYOUT ========== */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.header {
+  background: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+.header .balance {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.header .user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header .user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* DASHBOARD CONTENT */
+.content {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+/* CARDS */
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.card:hover{
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+.card h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #555;
+}
+.card p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.income { color: green; }
+.income:hover { color: darkgreen; }
+.expense { color: red; }
+.expense:hover { color: rgb(144, 1, 1); }
+.saving { color: goldenrod; }
+.saving:hover { color: rgb(231, 191, 91); }
+
+/* TRANSACTION TABLE */
+.table-container {
+  grid-column: 1 / -1;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+}
+th {
+  background: #f1f1f1;
+}
+tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* SPENDING BREAKDOWN */
+.breakdown {
+  grid-column: 1 / -1;
+}
+.bar {
+  margin: 10px 0;
+}
+.bar span {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+.progress {
+  background: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 12px;
+}
+.progress div {
+  height: 100%;
+}
+.food { width: 70%; background: red; }
+.transport { width: 50%; background: green; }
+.bills { width: 40%; background: goldenrod; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  body { flex-direction: column; }
+  .sidebar {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 10;
+  }
+  .sidebar h1 { display: block; font-size: 1.2rem; margin: 0; }
+  .sidebar nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #1e2a38;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 10px 0;
+    transition: max-height 0.3s ease;
+  }
+  .sidebar nav.open {
+    display: flex;
+  }
+  .sidebar .hamburger {
+    display: block;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  .sidebar .hamburger span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    margin: 5px auto;
+    background: #fff;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar .hamburger { display: none; }
+  .sidebar nav { display: flex !important; position: static; flex-direction: column; box-shadow: none; padding: 0; }
+}

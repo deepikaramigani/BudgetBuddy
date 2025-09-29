@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BudgetBuddy - Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h1>BudgetBuddy</h1>
+    <div class="hamburger" onclick="document.querySelector('.sidebar nav').classList.toggle('open')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#">Categories</a>
+      <a href="#">Reports</a>
+      <a href="#">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main Area -->
+  <div class="main">
+    <!-- Header -->
+    <header class="header">
+      <div class="balance">Balance: $2,500</div>
+      <div class="user">
+        <span>Leena</span>
+        <img src="./image.png" alt="User Profile"/>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <section class="content">
+      <!-- Overview Cards -->
+      <div class="card">
+        <h2>Total Balance</h2>
+        <p class="income">$2,500</p>
+      </div>
+      <div class="card">
+        <h2>Total Spent</h2>
+        <p class="expense">$1,200</p>
+      </div>
+      <div class="card">
+        <h2>Savings %</h2>
+        <p class="saving">35%</p>
+      </div>
+      <div class="card">
+        <h2>Top Spending Category</h2>
+        <p>Food & Dining</p>
+      </div>
+
+      <!-- Transaction Table -->
+      <div class="table-container">
+        <h2>Recent Transactions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2025-09-25</td>
+              <td>Food</td>
+              <td>$50</td>
+              <td class="expense">Expense</td>
+            </tr>
+            <tr>
+              <td>2025-09-24</td>
+              <td>Salary</td>
+              <td>$2,000</td>
+              <td class="income">Income</td>
+            </tr>
+            <tr>
+              <td>2025-09-23</td>
+              <td>Transport</td>
+              <td>$30</td>
+              <td class="expense">Expense</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Spending Breakdown -->
+      <div class="breakdown card">
+        <h2>Spending Breakdown</h2>
+        <div class="bar">
+          <span>Food</span>
+          <div class="progress"><div class="food"></div></div>
+        </div>
+        <div class="bar">
+          <span>Transport</span>
+          <div class="progress"><div class="transport"></div></div>
+        </div>
+        <div class="bar">
+          <span>Bills</span>
+          <div class="progress"><div class="bills"></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+<script>
+// Close nav when clicking outside (mobile)
+document.addEventListener('click', function(e) {
+  const nav = document.querySelector('.sidebar nav');
+  const hamburger = document.querySelector('.sidebar .hamburger');
+  if (!nav || !hamburger) return;
+  if (window.innerWidth > 768) return;
+  if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+    nav.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
